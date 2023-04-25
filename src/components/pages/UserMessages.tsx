@@ -54,7 +54,7 @@ function UserMessages() {
                 </div>
             }
             {
-                data?.pages[0]?.results?.length === 0 &&
+                data?.pages[0]?.length === 0 &&
                 <div className='mx-auto text-center pt-20 w-64'>
                     <img src={Empty} className='mx-auto text-center' />
                     <p className='mt-10 tracking-wider'>This user does not have any anonymous message</p>

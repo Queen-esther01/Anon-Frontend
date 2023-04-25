@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { Cookies } from 'react-cookie';
 import * as Sentry from '@sentry/react'
+import { Baseurl } from './Baseurl';
 
 
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.DEV ? 'http://localhost:8080/api/v1' : 'https://anonbackend.cyclic.app/'
+    baseURL: Baseurl
 });
 
 const onRequestSuccess = (config: any) => {

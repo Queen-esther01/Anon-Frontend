@@ -40,7 +40,6 @@ function Users() {
         getNextPageParam: (lastPage) => lastPage.next ? lastPage.next.page : undefined,
     })
 
-
     const loadMore = () => {
         fetchNextPage()
     }
@@ -75,7 +74,7 @@ function Users() {
                 </div>
             }
             {
-                data?.pages[0]?.results?.length === 0 &&
+                data?.pages[0]?.length === 0 &&
                 <div className='mx-auto text-center pt-20'>
                     <img src={Empty} className='mx-auto text-center' />
                     <p className='mt-10 tracking-wider'>There are no public users right now</p>
