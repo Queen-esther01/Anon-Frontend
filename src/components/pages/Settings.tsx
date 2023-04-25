@@ -85,7 +85,7 @@ function Settings() {
             navigator.share({
                 title: 'Anon',
                 text: `Send @${user.username} anonymous messages on Anon`,
-                url: `${location.origin}/${user.uniqueId}`,
+                url: `${location.origin}/${user.username}`,
             })
             .then(() => console.log(''))
             .catch((error) => {

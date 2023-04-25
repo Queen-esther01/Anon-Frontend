@@ -27,6 +27,11 @@ export const getUserByCode = async (id:string): Promise<any> => {
     return response.data.data
 };
 
+export const getUserByUsername = async (username:string): Promise<any> => {
+    let response = await axios.get(`/account/get-user-by-username/${username}`)
+    return response.data.data
+};
+
 export const getUsersByVisibility = async (search:string, page:string): Promise<any> => {
     const url = new URL(`${Baseurl}/account/get-users-by-visibility`)
     if(search !== ''){

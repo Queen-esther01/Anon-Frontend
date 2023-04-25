@@ -35,7 +35,7 @@ function App() {
 			errorElement: <Error404/>
 		},
 		{
-			path: "/:id",
+			path: "/:username",
 			element: <SendMessage />,
 			errorElement: <Error404/>,
 		},

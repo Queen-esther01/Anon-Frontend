@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import * as yup from 'yup';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -9,7 +8,7 @@ import Header from '../components/layout/Header'
 import { IMessage, ISendMessage } from '../interface/interfaces';
 import Textarea from '../components/shared/Textarea';
 import Button from '../components/shared/Button';
-import { getUserByCode, sendMessage } from '../api/App';
+import { getUserByUsername, sendMessage } from '../api/App';
 import NotFound from '../assets/images/404-error.png'
 import Loader from '../components/shared/Loader';
 
@@ -20,13 +19,13 @@ const schema = yup.object().shape({
 }).required();
 function SendMessage() {
 
-    const { id } = useParams()
+    const { username } = useParams()
     const queryClient = useQueryClient()
 
     const { isError, isLoading, data } = useQuery({
-        queryKey: ['user-by-code'],
-        queryFn: () => getUserByCode(id!),
-        enabled: !!id
+        queryKey: ['user-by-username'],
+        queryFn: () => getUserByUsername(username!),
+        enabled: !!username
     })
 
     const { handleSubmit, control, reset, formState: { errors } } = useForm<IMessage>({
