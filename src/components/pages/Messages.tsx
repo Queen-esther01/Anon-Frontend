@@ -32,7 +32,7 @@ function Messages() {
 
 
 
-    const { data:user, isLoading } = useQuery({
+    const { data:user, isFetching:isFetchingUser } = useQuery({
         queryKey: ['current-user'],
         queryFn: () => getCurrentUser(),
         enabled: !!token
@@ -92,10 +92,11 @@ function Messages() {
         }
     };
 
+
     return (
         <div className=''>
             {
-                (isFetching || isLoading) && !isError &&
+                (isFetching || isFetchingUser) && !isError &&
                 <div className='messages h-[55vh] overflow-y-auto mt-10 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 '>
                     {
                         new Array(9).fill(10).map((_, index) => (

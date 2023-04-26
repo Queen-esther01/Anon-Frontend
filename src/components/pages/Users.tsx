@@ -34,7 +34,7 @@ function Users() {
     });
 
 
-    const { isLoading, data, isError, fetchNextPage, hasNextPage, isFetchingNextPage,} = useInfiniteQuery({
+    const { isFetching, data, isError, fetchNextPage, hasNextPage, isFetchingNextPage,} = useInfiniteQuery({
         queryKey: ['get-users-by-visibility', search],
         queryFn: ({ pageParam = 1 }) => getUsersByVisibility(search, pageParam),
         getNextPageParam: (lastPage) => lastPage.next ? lastPage.next.page : undefined,
@@ -64,7 +64,7 @@ function Users() {
     return (
         <div className=''>
             {
-                isLoading && !isError &&
+                isFetching && !isError &&
                 <div className='messages h-[55vh] overflow-y-auto mt-10 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 '>
                     {
                         new Array(9).fill(10).map((_, index) => (

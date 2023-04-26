@@ -16,14 +16,14 @@ function UserMessages() {
     const navigate = useNavigate()
 
 
-    const { data:user, isLoading } = useQuery({
+    const { data:user, isFetching:isFetchingUser } = useQuery({
         queryKey: ['get-user-by-code'],
         queryFn: () => getUserByCode(id!),
         enabled: !!id
     })
 
 
-    const { isLoading:messageLoading, data, isError, fetchNextPage, hasNextPage, isFetchingNextPage,} = useInfiniteQuery({
+    const { isFetching, data, isError, fetchNextPage, hasNextPage, isFetchingNextPage,} = useInfiniteQuery({
         queryKey: ['messages'],
         queryFn: ({ pageParam = 1 }) => getUserMessages(user._id, pageParam),
         getNextPageParam: (lastPage) => lastPage.next ? lastPage.next.page : undefined,
@@ -44,7 +44,7 @@ function UserMessages() {
     return (
         <div>
             {
-                (isLoading || messageLoading) && !isError &&
+                (isFetchingUser || isFetching) && !isError &&
                 <div className='messages h-[55vh] overflow-y-auto mt-10 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 '>
                     {
                         new Array(9).fill(10).map((_, index) => (
@@ -61,7 +61,7 @@ function UserMessages() {
                 </div>
             }
             {
-                !messageLoading && !isLoading && data?.pages[0]?.results?.length! > 0 &&
+                !isFetching && !isFetchingUser && data?.pages[0]?.results?.length! > 0 &&
                 <div>
                     <h2 onClick={goBack} className='cursor-pointer flex items-center gap-6 mt-5 md:mt-20 lg:mt-10 tracking-wider text-xl text-center mb-10'>
                         <MdOutlineKeyboardBackspace size={25}/>
