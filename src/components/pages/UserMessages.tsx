@@ -44,7 +44,7 @@ function UserMessages() {
     return (
         <div>
             {
-                isLoading && messageLoading && !isError &&
+                (isLoading || messageLoading) && !isError &&
                 <div className='messages h-[55vh] overflow-y-auto mt-10 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 '>
                     {
                         new Array(9).fill(10).map((_, index) => (
