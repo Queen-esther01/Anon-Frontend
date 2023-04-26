@@ -23,7 +23,7 @@ function Error404() {
     return (
         <div className='px-6 mt-10 w-full text-center'>
             <img src={NotFound} className='mx-auto'/>
-            <p className='text-xl max-w-md mx-auto'>Oops, Something went wrong. You broke my app. Please contact me so I can fix your mistake.</p>
+            <p className='text-xl max-w-md mx-auto'>Oops, Something went wrong. Don't worry, I know what happened and will work on fixing it.</p>
             <p className='mt-10 underline text-lilac'>
                 <Link to='/app/messages'> Go back to app </Link>
             </p>

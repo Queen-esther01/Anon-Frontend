@@ -1,32 +1,34 @@
 // import { initializeApp } from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging/sw";
-import { onBackgroundMessage } from "firebase/messaging/sw";
+// import { getMessaging } from "firebase/messaging";
+// import { onBackgroundMessage } from "firebase/messaging/sw";
+// import { firebaseConfig } from '../src/utils/firebase'
+// const getMessaging = require("firebase/messaging/sw")
+// const firebaseConfig = require("../src/utils/firebase")
 // Scripts for firebase and firebase messaging
-// importScripts(
-//     "https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"
-// );
-// importScripts(
-//     "https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js"
-// );
-
+importScripts(
+    "https://www.gstatic.com/firebasejs/9.20.0/firebase-app-compat.js"
+);
+importScripts(
+    "https://www.gstatic.com/firebasejs/9.20.0/firebase-messaging-compat.js"
+);
 
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_FIREBASE_APP_ID,
-    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+    apiKey: 'AIzaSyAZPfYeUnysBz1DM6mUOipjhvrKBxwFZXs',
+    authDomain: 'anon-5cef0.firebaseapp.com',
+    projectId: 'anon-5cef0',
+    storageBucket: 'anon-5cef0.appspot.com',
+    messagingSenderId: '804819592645',
+    appId: '1:804819592645:web:163f16d31ce9525df197ac',
+    measurementId: 'G-JYRPD3PKKR'
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 // Retrieve firebase messaging
-const messaging = getMessaging();
+const messaging = firebase.messaging();
 
-onBackgroundMessage(messaging, (payload) => {
+messaging.onBackgroundMessage((payload) => {
     //console.log(navigator)
     //console.log("Received background message ", payload);
     const notificationTitle = payload.notification.title;

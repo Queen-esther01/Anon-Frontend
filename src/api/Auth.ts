@@ -5,6 +5,7 @@ import { getTokenFromFirebase } from '../utils/firebase';
 
 export const register = async (data:IRegister): Promise<any> => {
     let deviceToken = await getTokenFromFirebase()
+    //console.log(deviceToken)
     const userData = data
     userData.deviceToken = deviceToken!
     let response = await axios.post(`/account/register`, userData)

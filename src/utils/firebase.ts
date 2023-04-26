@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken } from "firebase/messaging";
 import { getAnalytics } from "firebase/analytics";
+import * as Sentry from '@sentry/react'
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
     projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
@@ -53,6 +54,12 @@ export const getTokenFromFirebase = () => {
     })
     .catch((err) => {
         //console.log("An error occurred while retrieving token. ", err);
+        Sentry.setContext("Failed Share", {
+            data: err,
+            error: JSON.stringify(err),
+            page: 'Firebase'
+        });
+        Sentry.captureException(err)
     });
 };
 

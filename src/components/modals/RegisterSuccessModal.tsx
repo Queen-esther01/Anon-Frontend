@@ -19,10 +19,10 @@ function RegisterSuccessModal({ user, open, onClose}:IModal) {
     //     // }
         
     // };
-
+   
     const shareLink = async () => {
         try {
-          await navigator.clipboard.writeText(`${location.origin}/${user.uniqueId}`);
+          await navigator.clipboard.writeText(`${location.origin}/${user.username}`);
           toast.success('Link copied')
         } catch (error:any) {
           throw new Error(error);
@@ -37,13 +37,13 @@ function RegisterSuccessModal({ user, open, onClose}:IModal) {
             .catch((error) => {
                 Sentry.setUser({
                     userName: user?.username,
-                    id: user?._id
+                    id: user?.id
                 });
                 Sentry.setContext("Failed Share", {
                     data: error,
                     error: JSON.stringify(error),
                     page: 'RegisterSuccess',
-                    uniqueID: user?.uniqueId
+                    uniqueID: user?.id
                 });
                 Sentry.captureException(error)
             });
@@ -59,7 +59,7 @@ function RegisterSuccessModal({ user, open, onClose}:IModal) {
                 <div className='text-center'>
                     <p className='w-full font-medium mt-2 break-all'>
                         Your profile link is<br/> 
-                        <span className='font-semibold'>{location.origin}/{user.uniqueId}</span>
+                        <span className='font-semibold'>{location.origin}/{user.username}</span>
                     </p>
                 </div>
                 <Button onClick={shareLink} className='mt-8 mb-3'>Copy & Share link</Button>

@@ -31,6 +31,7 @@ function Messages() {
     const location = new URL(window.location.href)
 
 
+
     const { data:user } = useQuery({
         queryKey: ['current-user'],
         queryFn: () => getCurrentUser(),
@@ -60,7 +61,7 @@ function Messages() {
 
     // const copyToClipboard = async () => {
     //     try {
-    //       await navigator.clipboard.writeText(`${location.origin}/${user.uniqueId}`);
+    //       await navigator.clipboard.writeText(`${location.origin}/${user.username}`);
     //       toast.success('Link copied')
     //     } catch (error:any) {
     //       throw new Error(error);

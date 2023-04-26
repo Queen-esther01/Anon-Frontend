@@ -58,7 +58,7 @@ function Register() {
             reset()
         },
     })
-
+    //console.log(import.meta.env)
 
     const onSubmit = (data: IRegister) => {
         mutation.mutate(data)

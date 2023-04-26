@@ -51,7 +51,7 @@ function Users() {
 
 
     const searchData = watch('search')
-    let searchDebounce: number | undefined 
+    let searchDebounce: string | number | NodeJS.Timeout | undefined
     useEffect(() => {
         searchDebounce = setTimeout(() => {
             setsearch(searchData)

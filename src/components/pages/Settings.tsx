@@ -72,7 +72,7 @@ function Settings() {
 
     // const copyToClipboard = async () => {
     //     try {
-    //         await navigator.clipboard.writeText(`${location.origin}/${user.uniqueId}`);
+    //         await navigator.clipboard.writeText(`${location.origin}/${user.username}`);
     //         toast.success('Link copied')
     //     } catch (error:any) {
     //         throw new Error(error);
@@ -150,7 +150,7 @@ function Settings() {
                         <div className='pb-10 mt-8'>
                             <h3>Share link</h3>
                             <div className='cursor-pointer text-sm gap-6 mt-6'>
-                                <p onClick={shareLink} className='text-lilac'>{ `${location.origin}/${user?.uniqueId}` }</p>
+                                <p onClick={shareLink} className='text-lilac'>{ `${location.origin}/${user?.username}` }</p>
                             </div>
                         </div>
                         <div className='pb-10 cursor-pointer lg:mt-10'>
