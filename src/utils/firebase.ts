@@ -1,9 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
-import { getAnalytics } from "firebase/analytics";
+import { getMessaging, getToken } from "firebase/messaging"
 import * as Sentry from '@sentry/react'
 
-export const firebaseConfig = {
+const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
     projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
@@ -13,10 +12,9 @@ export const firebaseConfig = {
     measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
+
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-
-const analytics = getAnalytics(firebaseApp);
 
 //Access Firebase cloud messaging
 const messaging = getMessaging(firebaseApp);

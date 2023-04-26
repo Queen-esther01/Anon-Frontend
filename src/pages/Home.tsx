@@ -53,7 +53,11 @@ function Home() {
                                 {`Hey @${user.username} 👋 Thanks for trying out Anon. `}
                                 {/* <Link to='https://twitter.com/lady_catheryn' className='text-lilac underline'>Twitter </Link> */}
                                 You can leave anonymous feedback&nbsp;
-                                <span className='underline cursor-pointer text-lilac'>here</span> : )
+                                <span className='underline cursor-pointer text-lilac'>
+                                    <Link to='https://anon-app.vercel.app/khaleesi'>
+                                        here
+                                    </Link>
+                                </span> : )
                             </span>
                         }
                     </p>
