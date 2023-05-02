@@ -97,7 +97,7 @@ function Users() {
                             />
                         </div>
                     </form>
-                    <div className='messages h-[48vh] md:h-[40vh] lg:h-[67vh] overflow-y-auto '>
+                    <div className='messages h-[45vh] md:h-[40vh] lg:h-[67vh] overflow-y-auto '>
                         <div className='mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-6'>
                             {
                                 data?.pages?.map((page:any) => (
