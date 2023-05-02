@@ -84,7 +84,7 @@ function Users() {
                 </div>
             }
             {
-                data?.pages[0]?.results?.length! > 0 &&
+                !isFetching && data?.pages[0]?.results?.length! > 0 &&
                 <div className=''>
                     <h2 className=' mt-5 md:mt-20 lg:mt-10 tracking-wider text-xl text-center mb-8'>Public Anon Users</h2>
                     <form className='mb-7 md:mb-14'>

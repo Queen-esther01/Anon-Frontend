@@ -114,7 +114,7 @@ function Messages() {
                 </div>
             }
             {
-                token && data?.pages[0]?.results?.length! > 0 &&
+                (!isFetching && !isFetchingUser) && token && data?.pages[0]?.results?.length! > 0 &&
                 <div>
                     <h2 className=' mt-5 md:mt-20 lg:mt-10 tracking-wider text-xl text-center mb-10'>Your messages</h2>
                     <div className='messages h-[50vh] lg:h-[75vh] overflow-y-auto '>
