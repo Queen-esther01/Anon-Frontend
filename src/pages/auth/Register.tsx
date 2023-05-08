@@ -99,7 +99,7 @@ function Register() {
                                 control={control}
                                 render={({ field }) => <TextInput {...field} errors={errors} type='text' placeholder='Enter username' className='' />}
                             />
-                            <p onClick={generateRandomUsername} className='underline mt-1'>Generate random username</p>
+                            <p onClick={generateRandomUsername} className='underline mt-1 cursor-pointer'>Generate random username</p>
                         </div>
                         <div>
                             <Controller
