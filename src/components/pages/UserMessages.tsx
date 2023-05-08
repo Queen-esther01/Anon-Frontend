@@ -19,15 +19,17 @@ function UserMessages() {
     const { data:user, isFetching:isFetchingUser } = useQuery({
         queryKey: ['get-user-by-code'],
         queryFn: () => getUserByCode(id!),
-        enabled: !!id
+        enabled: !!id,
+        staleTime: 0
     })
 
 
     const { isFetching, data, isError, fetchNextPage, hasNextPage, isFetchingNextPage,} = useInfiniteQuery({
-        queryKey: ['messages'],
+        queryKey: ['user-messages'],
         queryFn: ({ pageParam = 1 }) => getUserMessages(user._id, pageParam),
         getNextPageParam: (lastPage) => lastPage.next ? lastPage.next.page : undefined,
-        enabled: !!user
+        enabled: !!user,
+        staleTime: 0
     })
 
 
