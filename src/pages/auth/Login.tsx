@@ -6,7 +6,7 @@ import { HiOutlineEye } from 'react-icons/hi';
 import { VscChevronLeft } from 'react-icons/vsc'
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import * as yup from 'yup';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useCookies } from 'react-cookie';
 import toast from 'react-hot-toast';
@@ -29,6 +29,7 @@ function Login() {
     const [showPassword, setshowPassword] = useState<boolean>(false)
     const [, setCookie] = useCookies();
     const navigate = useNavigate()
+    const queryClient = useQueryClient()
 
 
     const { handleSubmit, control, reset, formState: { errors } } = useForm<IRegister>({
@@ -49,6 +50,7 @@ function Login() {
             setCookie('x-auth-token', data.data.accessToken, { maxAge: 864000, path: '/' });
             toast.success('Login successful')
             reset()
+            queryClient.invalidateQueries({ queryKey: ['messages'] })
             navigate('/app/messages')
         },
     })
