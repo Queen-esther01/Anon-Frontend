@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 import { generateUsername } from "unique-username-generator";
 import Header from '../../components/layout/Header'
 import Button from '../../components/shared/Button'
-import { IRegister, IUser } from '../../interface/interfaces';
+import { RegisterInterface, IUser } from '../../interface/interfaces';
 import TextInput from '../../components/shared/TextInput';
 import Loader from '../../components/shared/Loader';
 import { register } from '../../api/Auth';
@@ -36,7 +36,7 @@ function Register() {
     
 
 
-    const { handleSubmit, control, reset, setValue, formState: { errors } } = useForm<IRegister>({
+    const { handleSubmit, control, reset, setValue, formState: { errors } } = useForm<RegisterInterface>({
         resolver: yupResolver(schema),
         defaultValues: {
             username: '',
@@ -47,7 +47,7 @@ function Register() {
     
 
     const mutation = useMutation({
-        mutationFn: (data: IRegister) => register(data),
+        mutationFn: (data: RegisterInterface) => register(data),
         onError: (err:any) => {
             toast.error(`${err}`);
         },
@@ -61,7 +61,7 @@ function Register() {
     })
     //console.log(import.meta.env)
 
-    const onSubmit = (data: IRegister) => {
+    const onSubmit = (data: RegisterInterface) => {
         mutation.mutate(data)
     }
 

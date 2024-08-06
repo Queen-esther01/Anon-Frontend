@@ -23,7 +23,7 @@ export interface ITextInput {
     [key:string]: any
 }
 
-export interface IRegister {
+export interface RegisterInterface {
     username: string
     password: string
     deviceToken?: string

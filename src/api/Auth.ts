@@ -1,11 +1,11 @@
 // import axios from 'axios'
 import axios from '../utils/AxiosConfig'
-import { IRegister, LoginInterface } from '../interface/interfaces';
+import { RegisterInterface } from '../interface/interfaces';
 import { getTokenFromFirebase } from '../utils/firebase';
 import { Cookies } from 'react-cookie';
 
 
-export const register = async (data:IRegister): Promise<any> => {
+export const register = async (data:RegisterInterface): Promise<any> => {
     let cookie = new Cookies()
     let deviceToken = cookie.get('x-device-token')
     if(!deviceToken){
@@ -22,7 +22,7 @@ export const register = async (data:IRegister): Promise<any> => {
     })
 };
 
-export const login = async (data:IRegister): Promise<any> => {
+export const login = async (data:RegisterInterface): Promise<any> => {
     let cookie = new Cookies()
     let deviceToken = cookie.get('x-auth-token')
     if(! deviceToken){

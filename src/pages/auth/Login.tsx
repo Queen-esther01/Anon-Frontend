@@ -11,7 +11,7 @@ import { useCookies } from 'react-cookie';
 import toast from 'react-hot-toast';
 import Header from '../../components/layout/Header'
 import Button from '../../components/shared/Button'
-import { IRegister, LoginInterface } from '../../interface/interfaces';
+import { RegisterInterface } from '../../interface/interfaces';
 import TextInput from '../../components/shared/TextInput';
 import Loader from '../../components/shared/Loader';
 import { login } from '../../api/Auth';
@@ -21,7 +21,7 @@ import { login } from '../../api/Auth';
 const schema = yup.object().shape({
     username: yup.string().min(5).required(),
     password: yup.string().min(5).required(),
-    deviceToken: yup.string().required(),
+    deviceToken: yup.string(),
 }).required();
 function Login() {
 
@@ -32,7 +32,7 @@ function Login() {
     const queryClient = useQueryClient()
 
 
-    const { handleSubmit, control, reset, formState: { errors } } = useForm<IRegister>({
+    const { handleSubmit, control, reset, formState: { errors } } = useForm<RegisterInterface>({
         resolver: yupResolver(schema),
         defaultValues: {
             username: '',
@@ -43,7 +43,7 @@ function Login() {
     
 
     const mutation = useMutation({
-        mutationFn: (data: IRegister) => login(data),
+        mutationFn: (data: RegisterInterface) => login(data),
         onError: (err:any) => {
             toast.error(`${err.response.data.message}`);
         },
@@ -57,7 +57,7 @@ function Login() {
     })
 
 
-    const onSubmit = (data: IRegister) => {
+    const onSubmit = (data: RegisterInterface) => {
         mutation.mutate(data)
     }
 
