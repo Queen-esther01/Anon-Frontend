@@ -28,6 +28,10 @@ export interface IRegister {
     password: string
     deviceToken: string
 }
+export interface LoginInterface {
+    username: string
+    password: string
+}
 
 export interface IModal {
     open: boolean

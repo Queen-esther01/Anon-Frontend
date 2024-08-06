@@ -40,6 +40,7 @@ function Register() {
         defaultValues: {
             username: '',
             password: '',
+            deviceToken: ''
         }
     });
     

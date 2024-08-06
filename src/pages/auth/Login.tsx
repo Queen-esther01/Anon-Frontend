@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Controller, useForm } from 'react-hook-form';
 import { HiOutlineEyeSlash } from 'react-icons/hi2'
 import { HiOutlineEye } from 'react-icons/hi';
-import { VscChevronLeft } from 'react-icons/vsc'
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import * as yup from 'yup';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -12,7 +11,7 @@ import { useCookies } from 'react-cookie';
 import toast from 'react-hot-toast';
 import Header from '../../components/layout/Header'
 import Button from '../../components/shared/Button'
-import { IRegister } from '../../interface/interfaces';
+import { IRegister, LoginInterface } from '../../interface/interfaces';
 import TextInput from '../../components/shared/TextInput';
 import Loader from '../../components/shared/Loader';
 import { login } from '../../api/Auth';
@@ -32,7 +31,7 @@ function Login() {
     const queryClient = useQueryClient()
 
 
-    const { handleSubmit, control, reset, formState: { errors } } = useForm<IRegister>({
+    const { handleSubmit, control, reset, formState: { errors } } = useForm<LoginInterface>({
         resolver: yupResolver(schema),
         defaultValues: {
             username: '',
@@ -42,7 +41,7 @@ function Login() {
     
 
     const mutation = useMutation({
-        mutationFn: (data: IRegister) => login(data),
+        mutationFn: (data: LoginInterface) => login(data),
         onError: (err:any) => {
             toast.error(`${err.response.data.message}`);
         },
@@ -56,7 +55,7 @@ function Login() {
     })
 
 
-    const onSubmit = (data: IRegister) => {
+    const onSubmit = (data: LoginInterface) => {
         mutation.mutate(data)
     }
 

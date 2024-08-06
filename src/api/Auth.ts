@@ -1,6 +1,6 @@
 // import axios from 'axios'
 import axios from '../utils/AxiosConfig'
-import { IRegister } from '../interface/interfaces';
+import { IRegister, LoginInterface } from '../interface/interfaces';
 import { getTokenFromFirebase } from '../utils/firebase';
 import { Cookies } from 'react-cookie';
 
@@ -22,7 +22,7 @@ export const register = async (data:IRegister): Promise<any> => {
     })
 };
 
-export const login = async (data:IRegister): Promise<any> => {
+export const login = async (data:LoginInterface): Promise<any> => {
     let response = await axios.post(`/account/login`, data)
     return response.data
 };

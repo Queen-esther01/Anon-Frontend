@@ -28,7 +28,7 @@ function SendMessage() {
         enabled: !!username
     })
 
-    const { handleSubmit, control, reset, formState: { errors } } = useForm<IMessage>({
+    const { handleSubmit, control, reset, formState: { errors } } = useForm<{message: string}>({
         resolver: yupResolver(schema),
         defaultValues: {
             message: '',
@@ -49,7 +49,7 @@ function SendMessage() {
     })
 
 
-    const onSubmit = (value: IMessage) => {
+    const onSubmit = (value: { message: string }) => {
         const form = {
             messagesId: data?.messagesId,
             userId: data._id,
