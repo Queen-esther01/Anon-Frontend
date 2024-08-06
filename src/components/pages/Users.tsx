@@ -14,7 +14,7 @@ dayjs.extend(localizedFormat)
 
 
 const schema = yup.object().shape({
-    string: yup.string(),
+    search: yup.string(),
 }).required();
 function Users() {
 

@@ -23,6 +23,7 @@ import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 const schema = yup.object().shape({
     username: yup.string().min(5).max(15).required(),
     password: yup.string().min(5).required(),
+    deviceToken: yup.string(),
 }).required();
 function Register() {
 
