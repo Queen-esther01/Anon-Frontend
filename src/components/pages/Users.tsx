@@ -24,7 +24,7 @@ function Users() {
     const [search, setsearch] = useState<string>('')
 
 
-    const { control, watch } = useForm({
+    const { control, watch } = useForm<{search:string}>({
         resolver: yupResolver(schema),
         defaultValues: {
             search: '',
