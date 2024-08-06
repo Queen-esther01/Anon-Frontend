@@ -19,8 +19,7 @@ function Home() {
 
     async function name() {
         let deviceToken = await getTokenFromFirebase()
-        setCookie('x-device-token', token, { maxAge: 864000, path: '/' });
-        console.log(deviceToken)
+        setCookie('x-device-token', deviceToken, { maxAge: 864000, path: '/' });
     }
     useEffect(() => {
         name()
