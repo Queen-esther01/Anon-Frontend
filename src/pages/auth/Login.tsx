@@ -21,6 +21,7 @@ import { login } from '../../api/Auth';
 const schema = yup.object().shape({
     username: yup.string().min(5).required(),
     password: yup.string().min(5).required(),
+    deviceToken: yup.string().required(),
 }).required();
 function Login() {
 
@@ -31,17 +32,18 @@ function Login() {
     const queryClient = useQueryClient()
 
 
-    const { handleSubmit, control, reset, formState: { errors } } = useForm<LoginInterface>({
+    const { handleSubmit, control, reset, formState: { errors } } = useForm<IRegister>({
         resolver: yupResolver(schema),
         defaultValues: {
             username: '',
             password: '',
+            deviceToken: ''
         }
     });
     
 
     const mutation = useMutation({
-        mutationFn: (data: LoginInterface) => login(data),
+        mutationFn: (data: IRegister) => login(data),
         onError: (err:any) => {
             toast.error(`${err.response.data.message}`);
         },
@@ -55,7 +57,7 @@ function Login() {
     })
 
 
-    const onSubmit = (data: LoginInterface) => {
+    const onSubmit = (data: IRegister) => {
         mutation.mutate(data)
     }
 

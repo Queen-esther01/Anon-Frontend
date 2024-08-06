@@ -7,8 +7,8 @@ import { Cookies } from 'react-cookie';
 
 export const register = async (data:IRegister): Promise<any> => {
     let cookie = new Cookies()
-    let deviceToken = cookie.get('x-auth-token')
-    if(! deviceToken){
+    let deviceToken = cookie.get('x-device-token')
+    if(!deviceToken){
         deviceToken = await getTokenFromFirebase()
     }
     const userData = data
@@ -22,7 +22,19 @@ export const register = async (data:IRegister): Promise<any> => {
     })
 };
 
-export const login = async (data:LoginInterface): Promise<any> => {
-    let response = await axios.post(`/account/login`, data)
-    return response.data
+export const login = async (data:IRegister): Promise<any> => {
+    let cookie = new Cookies()
+    let deviceToken = cookie.get('x-auth-token')
+    if(! deviceToken){
+        deviceToken = await getTokenFromFirebase()
+    }
+    const userData = data
+    userData.deviceToken = deviceToken!
+    return axios.post(`/account/login`, userData)
+    .then(response => {
+        return response.data
+    })
+    .catch ((error:{ response: { data: { message: string} }}) => {
+        return Promise.reject(new Error(JSON.stringify(error.response.data.message)))
+    })
 };
