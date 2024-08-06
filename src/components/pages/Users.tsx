@@ -14,7 +14,7 @@ dayjs.extend(localizedFormat)
 
 
 const schema = yup.object().shape({
-    search: yup.string(),
+    search: yup.string().required(),
 }).required();
 function Users() {
 
@@ -24,7 +24,7 @@ function Users() {
     const [search, setsearch] = useState<string>('')
 
 
-    const { control, watch } = useForm<{search?:string}>({
+    const { control, watch } = useForm<{search:string}>({
         resolver: yupResolver(schema),
         defaultValues: {
             search: '',
