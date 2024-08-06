@@ -54,7 +54,7 @@ export const sendMessage = async (data:any): Promise<any> => {
 };
 
 export const updateProfile = async (data:any): Promise<any> => {
-    let response = await axios.put(`/settings/toggle`, data)
+    let response = await axios.put(`/settings/toggle-visibility`, data)
     return response.data.data
 };
 

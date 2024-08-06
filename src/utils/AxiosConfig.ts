@@ -59,7 +59,7 @@ const onResponseError = (err: any) => {
           uniqueID: userData?.uniqueId
         });
         Sentry.captureException(err)
-        throw new Error(err)
+        Promise.reject(new Error(err))
     }
 
     if (err.response && err.response.status === 404) {
@@ -70,7 +70,7 @@ const onResponseError = (err: any) => {
             uniqueID: userData?.uniqueId
         });
         Sentry.captureException(err)
-        throw new Error(err)
+        Promise.reject(new Error(err))
     }
 
     if (err.response && err.response.status === 500) {
@@ -81,7 +81,7 @@ const onResponseError = (err: any) => {
             uniqueID: userData?.uniqueId
         });
         Sentry.captureException(err)
-        throw new Error(err)
+        Promise.reject(new Error(err))
     }
 
     Sentry.captureException(err)

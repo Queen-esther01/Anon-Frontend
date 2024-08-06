@@ -17,7 +17,6 @@ import Loader from '../../components/shared/Loader';
 import { register } from '../../api/Auth';
 import RegisterSuccessModal from '../../components/modals/RegisterSuccessModal';
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
-import { getTokenFromFirebase } from '../../utils/firebase';
 
 
 //refirect to app immediately after registration
@@ -48,7 +47,7 @@ function Register() {
     const mutation = useMutation({
         mutationFn: (data: IRegister) => register(data),
         onError: (err:any) => {
-            toast.error(`${err.response.data.message}`);
+            toast.error(`${err}`);
         },
         onSuccess: (data: any) => {
             setCookie('x-auth-token', data.data.accessToken, { maxAge: 864000, path: '/' });

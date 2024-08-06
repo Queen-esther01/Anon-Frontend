@@ -101,43 +101,6 @@ function App() {
 				router={router}
 			/>
 		</QueryClientProvider>
-		
-		// <BrowserRouter>
-		// 	<QueryClientProvider client={queryClient}>
-		// 		<Toaster
-		// 			position="top-center"
-		// 			toastOptions={{
-		// 				duration: 2000,
-		// 				error: {
-		// 					style: {
-		// 						borderRadius: '30px',
-		// 						background: '#210449',
-		// 						color: '#fff',
-		// 					},
-		// 					icon: <AiOutlineClose color='red' size={20} className="font-medium"/>
-		// 				},
-		// 				success: {
-		// 					style: {
-		// 						borderRadius: '30px',
-		// 						background: '#fff',
-		// 						color: '#040321',
-		// 					},
-		// 					icon: <AiOutlineCheck color='green' size={20} className="font-medium"/>
-		// 				},
-		// 			}}
-		// 		/>
-		// 		<Routes>
-		// 			<Route path='/' element={<Home/>} errorElement={<Error404/>}/>
-		// 			<Route path='/:id' element={<SendMessage/>}/>
-		// 			<Route path='/register' element={<Register/>}/>
-		// 			<Route path='/login' element={<Login/>}/>
-		// 			<Route element={<Application/>}>
-		// 				<Route path='/app/messages' element={<Messages/>}/>
-		// 				<Route path='/app/users' element={<Users/>}/>
-		// 			</Route>
-		// 		</Routes>
-		// 	</QueryClientProvider>
-		// </BrowserRouter>
 	)
 }
 

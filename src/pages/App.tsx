@@ -6,8 +6,6 @@ import Header from '../components/layout/Header'
 import Logo from '../assets/images/anon-cut-small-black.svg'
 import { useQuery } from '@tanstack/react-query'
 import { getCurrentUser } from '../api/App'
-import { useEffect } from 'react';
-import { getTokenFromFirebase } from '../utils/firebase';
 
 
 //page for link share where people can send messages
@@ -16,15 +14,6 @@ function App() {
     const location = useLocation()
     let cookie = new Cookies()
     let token = cookie.get('x-auth-token')
-
-    // async function name() {
-    //     let deviceToken = await getTokenFromFirebase()
-    //     console.log(deviceToken)
-    // }
-    // useEffect(() => {
-    //     name()
-    // }, [])
-
 
     const activeLink = location.pathname.split('/')[2].toLowerCase()
 
@@ -49,12 +38,6 @@ function App() {
             activeIcon: <RiSettings5Fill/>,
         }
     ]
-
-    // const icons = {
-    //     'Messages' : <BiMessageSquare size={30}/>,
-    //     'Users' : <HiOutlineUsers size={30}/>,
-    //     'Settings' : <IoSettingsOutline size={30}/>
-    // }
 
 
     const { data:user } = useQuery({

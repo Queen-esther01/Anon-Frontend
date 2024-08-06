@@ -2,15 +2,30 @@ import Header from '../components/layout/Header'
 import Incognito from '../assets/images/incognito.png'
 import Button from '../components/shared/Button'
 import { Link } from 'react-router-dom'
-import { Cookies } from 'react-cookie';
+import { Cookies, useCookies } from 'react-cookie';
 import * as Sentry from '@sentry/react'
+import { useEffect } from 'react';
+import { getTokenFromFirebase } from '../utils/firebase';
 
 //redirect to feed back if user is logged in
 function Home() {
+    
+    const [, setCookie] = useCookies();
 
     let cookie = new Cookies()
     let token = cookie.get('x-auth-token')
     const user = JSON.parse(localStorage.getItem('userData')!)
+
+
+    async function name() {
+        let deviceToken = await getTokenFromFirebase()
+        setCookie('x-device-token', token, { maxAge: 864000, path: '/' });
+        console.log(deviceToken)
+    }
+    useEffect(() => {
+        name()
+    }, [])
+
 
 
     const shareLink = async () => {
