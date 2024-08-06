@@ -26,7 +26,7 @@ export interface ITextInput {
 export interface IRegister {
     username: string
     password: string
-    deviceToken: string
+    deviceToken?: string
 }
 export interface LoginInterface {
     username: string
