@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,8 +10,6 @@ import Empty from '../../assets/images/no-message.svg'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import { Link, useNavigate } from 'react-router-dom';
 import { IUser } from '../../interface/interfaces';
-import TextInput from '../shared/TextInput';
-import { getTokenFromFirebase } from '../../utils/firebase';
 dayjs.extend(localizedFormat)
 
 
@@ -34,7 +32,7 @@ function Users() {
     });
 
 
-    const { isFetching, data, isError, fetchNextPage, hasNextPage, isFetchingNextPage,} = useInfiniteQuery({
+    const { isFetching, data, isError, fetchNextPage, hasNextPage } = useInfiniteQuery({
         queryKey: ['get-users-by-visibility', search],
         queryFn: ({ pageParam = 1 }) => getUsersByVisibility(search, pageParam),
         getNextPageParam: (lastPage) => lastPage.next ? lastPage.next.page : undefined,
